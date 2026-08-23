@@ -13,32 +13,33 @@ void display(int nums[MAX], int n) {
 	}
 }
 
-void remove(int nums[MAX], int *n, int pos) {
-	if (pos<0 || pos>*n-1) return;
-	for (int *ptr = nums+pos; ptr<=nums+*n-1; ptr++) {
-		*ptr = *(ptr+1);
+void search(int nums[], int n, int ele) {
+	for (int i=0; i<n; i++) {
+		if (nums[i] == ele) {
+			printf("\nElement found at position %d", i);
+			return;
+		}
 	}
-	(*n)--;
+
+	printf("\nElement not found");
 }
 
 int main() {
-	int nums[MAX], pos, n;
+	int nums[MAX], ele, n;
+
 	printf("How many elements do you want in the array?\n");
 	scanf("%d", &n);
-	
+
 	printf("\nEnter %d elements:\n", n);
 	read(nums, n);
-	
+
 	printf("\nOriginal array:\n");
 	display(nums, n);
-	
-	printf("\n\nWhat position element do you want to delete?\n");
-	scanf("%d", &pos);
-	
-	remove(nums, &n, pos);
-	
-	printf("\nNew array:\n");
-	display(nums, n);
-	
+
+	printf("\n\nWhich element do you want to search?\n");
+	scanf("%d", &ele);
+
+	search(nums, n, ele);
+
 	return 0;
 }
